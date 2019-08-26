@@ -1,0 +1,8 @@
+## Interface: 80200
+## Title: Fail Data Tracker
+## Author: failoe
+## Notes: Tracks various datapoints for vizualization
+## SavedVariables: popupOn
+## SavedVariablesPerCharacter: EventID, LevelUpTimes, LevelUpEpochTime, totalKills, totalDeaths, totalSpiritRezzes, moneyGainedPerLevel, moneyLostPerLevel, killsPerLevel, deathsPerLevel, spiritRezzesPerLevel, questsPerLevel, EventLog
+## Version: 0.1.0
+FailDataTracker.lua

@@ -232,8 +232,6 @@ function frame:OnEvent(event, arg1)
 		newMoney = GetMoney();
 		moneyDiff = newMoney - currentMoney;
 		outputTable[#outputTable+1] = moneyDiff;
-		print("moneyDiff "..moneyDiff);
-		print("newMoney "..newMoney);
 		currentMoney = newMoney;
 		EventLog[EventID] = outputTable;
 		if moneyDiff > 0 then

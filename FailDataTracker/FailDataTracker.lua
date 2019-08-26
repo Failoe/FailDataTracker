@@ -2,7 +2,7 @@
 -- Name: Fail Data Tracker
 -- Author: failoe
 -- Description: Tracks various datapoints for vizualization
--- Version: 0.0.1
+-- Version: 0.0.2
 
 -- To Do:
 -- Track progress by Zone
@@ -70,25 +70,39 @@ frame:RegisterEvent("ZONE_CHANGED")
 frame:RegisterEvent("PLAYER_MONEY")
 
 
-function frame:OnEvent(event, arg1, arg2)
+function frame:OnEvent(event, arg1)
 	if event == "ADDON_LOADED" and arg1 == "FailDataTracker" then
 		frame:UnregisterEvent("ADDON_LOADED")
 		if EventLog == nil then
 			print("Initializing Fail Data Tracker for character")
 			EventID = 0;
+			local lvl = UnitLevel("player");
+			print("Initial Level: "..lvl);
 			LevelUpTimes = {};
-			LevelUpTimes[1] = 0;
 			LevelUpEpochTime = {};
-			LevelUpEpochTime[1] = time();
-			totalKills = 0;
-			totalDeaths = 0;
-			totalSpiritRezzes = 0;
 			moneyGainedPerLevel = {};
 			moneyLostPerLevel = {};
 			killsPerLevel = {};
 			deathsPerLevel = {};
 			spiritRezzesPerLevel = {};
 			questsPerLevel = {};
+			
+			for i=1,lvl do
+				LevelUpTimes[i] = 0;
+				LevelUpEpochTime[i] = time();
+				LevelUpTimes[i] = 0;
+				LevelUpEpochTime[i] = 0;
+				moneyGainedPerLevel[i] = 0;
+				moneyLostPerLevel[i] = 0;
+				killsPerLevel[i] = 0;
+				deathsPerLevel[i] = 0;
+				spiritRezzesPerLevel[i] = 0;
+				questsPerLevel[i] = 0;
+			end
+
+			totalKills = 0;
+			totalDeaths = 0;
+			totalSpiritRezzes = 0;
 			popupOn = false;
 			EventLog = {};
 		end
